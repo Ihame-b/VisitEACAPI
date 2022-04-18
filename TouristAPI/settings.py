@@ -116,6 +116,21 @@ else:
     DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
 
 
+# DATABASES = {  
+#     'default': {  
+#         'ENGINE': 'django.db.backends.mysql',  
+#         'NAME': 'my_database',  
+#         'USER': 'root',  
+#         'PASSWORD': 'your_password',  
+#         'HOST': '127.0.0.1',  
+#         'PORT': '3306',  
+#         'OPTIONS': {  
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+#         }  
+#     }  
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -154,7 +169,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'product_image')
-MEDIA_URL = '/product_image/'
+# MEDIA_URL = '/product_image/'
 
 
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
