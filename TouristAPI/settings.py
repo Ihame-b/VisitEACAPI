@@ -4,6 +4,7 @@ from datetime import timedelta
 from pathlib import Path
 from decouple import config
 import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,6 +18,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
+# DEBUG = bool(os.environ.get('DEBUG',  False))
+DEBUG == False
 
 ALLOWED_HOSTS = ['*']
 
@@ -24,6 +27,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -148,9 +152,31 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'product_image')
+MEDIA_URL = '/product_image/'
+
+
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#jazzin setting
+JAZZMIN_SETTINGS = {
+    "site_header": "Visit EAC",
+     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "ADMIN",
+
+    # Welcome text on the login screen
+    "welcome_sign": "Welcome to the visit EAC",
+    # "site_logo": "books/img/logo.png",
+
+#     "changeform_format": "horizontal_tabs",
+# # override change forms on a per modeladmin basis
+# "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+
+    
+}
+
